@@ -1,0 +1,7 @@
+#!/bin/bash
+export PROJECT_NAME=CrowdedMountain
+export PROJECT_HOME=$HOME/$PROJECT_NAME/$PROJECT_NAME
+find $PROJECT_HOME -path $PROJECT_HOME/env -prune -o -name '*.pyc'
+rm `find . -path $PROJECT_HOME/env -prune -o -name '*.pyc'` -rf
+find $PROJECT_HOME -path $PROJECT_HOME/env -prune -o -name '*~'
+rm `find . -path $PROJECT_HOME/env -prune -o -name '*~'` -rf

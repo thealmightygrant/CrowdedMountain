@@ -1,0 +1,9 @@
+apps      -- django apps
+vendor    -- other apps that can't be installd with pip or easy_install
+bin       -- bash scripts used to automate development (start/stop celery, 
+             deploy to stagin and production servers, clean up directories,
+             compress thingamajigs, backup databases
+config    -- configuration files for databases, servers, celery, etc.
+media     -- static assets, javascript, css, images, fonts
+templates -- html templates
+static    -- compressed assets for production server
