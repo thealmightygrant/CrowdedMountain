@@ -20,6 +20,8 @@ DATABASES = {
     }
 }
 
+TEST_RUNNER = 'bin.testrunner.ExcludeAppsTestSuiteRunner'
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -107,7 +109,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'CrowdedMountain.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    '/home/sherrick/CrowdedMountain/CrowdedMountain/templates',
+
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
@@ -120,7 +123,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
-    'cdot_counting',
+    'CrowdedMountain.apps.cdot_counting',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
