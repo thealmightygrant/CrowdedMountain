@@ -11,7 +11,7 @@ class ExcludeAppsTestSuiteRunner(DjangoTestSuiteRunner):
             # No appnames specified on the command line, so we run all
             # tests, but remove those which we know are troublesome.
             APPS_TO_NOT_RUN = (
-                'django_extensions',
+                'CrowdedMountain.apps.cdot_counting',
                 )
             test_labels = [app for app in settings.INSTALLED_APPS
                            if not app in APPS_TO_NOT_RUN
