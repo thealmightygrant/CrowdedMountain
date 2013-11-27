@@ -2,8 +2,7 @@
 *.pyc
 
 # Distribution / packaging
-bin/
-env/
+mountain_env/
 
 # Installer logs
 pip-log.txt
