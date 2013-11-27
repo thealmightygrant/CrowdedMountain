@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>Crowds Suck, Watch our site for up to date info on where they aren't</h1>
+
+    <!-- define the parts of the code that are different 
+	 between the different pages with block tags -->
+
+    {% block content %}<!-- put default content in here, can always be overwritten --> 
+    {% endblock %}
+
+    {% block footer %}
+    <hr>
+    <p>Thanks for visiting my site.</p>
+    {% endblock %}
+</body>
+</html>
