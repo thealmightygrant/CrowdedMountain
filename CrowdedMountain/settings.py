@@ -20,7 +20,7 @@ DATABASES = {
     }
 }
 
-TEST_RUNNER = 'bin.testrunner.ExcludeAppsTestSuiteRunner'
+TEST_RUNNER = 'CrowdedMountain.bin.testrunner.ExcludeAppsTestSuiteRunner'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#allowed-hosts
