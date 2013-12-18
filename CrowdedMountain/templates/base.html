@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "basic_style.css" %}">
 </head>
 <body>
     <h1>Crowds Suck, Watch our site for up to date info on where they aren't</h1>
