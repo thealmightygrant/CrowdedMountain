@@ -2,9 +2,50 @@
 
 {% block title %}MMMmmmmountain DATA{% endblock %}
 
+{% block header %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "cdot_count_style.css" %}">
+    <script type="text/javascript" src="{% static "modernizr-2.7.1.js" %}"></script>
+{% endblock %}
+
 {% block content %}
-<p>Breckenridge: {{ breck }}</p>
-<p>Vail / Beaver Creek: {{ vail }}</p>
+<div class="container">
+<div class="main">
+<div id="mountain-slider" class="mountain-slider">
+<ul>
+  <li><a href="#"><h4>Keystone: {{ keystone }}</h4></a></li>
+  <li><a href="#"><h4>Arapahoe Basin: {{ abasin }}</h4></a></li>
+  <li><a href="#"><h4>Loveland: {{ loveland }}</h4></a></li>
+</ul>
+<ul>
+  <li><a href="#"><h4>Keystone: {{ keystone }}</h4></a></li>
+  <li><a href="#"><h4>Arapahoe Basin: {{ abasin }}</h4></a></li>
+  <li><a href="#"><h4>Breckenridge: {{ breck }}</h4></a></li>
+</ul>
+<ul>
+  <li><a href="#"><h4>Keystone: {{ keystone }}</h4></a></li>
+  <li><a href="#"><h4>Arapahoe Basin: {{ abasin }}</h4></a></li>
+  <li><a href="#"><h4>Breckenridge: {{ breck }}</h4></a></li>
+  <li><a href="#"><h4>Vail: {{ vail }}</h4></a></li>
+  <li><a href="#"><h4>Beaver Creek: {{ beaver_creek }}</h4></a></li>
+</ul>
+<nav>
+  <a href="#">Loveland Pass</a>
+  <a href="#">Key, A Bay, Breck</a> 
+  <a href="#">All Epic</a>
+</nav>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{% static "jquery-1.10.2.js" %}"></script>
+<script type="text/javascript" src="{% static "jquery.mountain_slider.js" %}"></script>
+<script>
+  $(function() {
+  
+  $( '#mountain-slider' ).mountainslider();
+  
+  });
+</script>
 {% endblock %}
 
 

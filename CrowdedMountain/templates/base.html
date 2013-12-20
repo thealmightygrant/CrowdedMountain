@@ -1,9 +1,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <title>{% block title %}{% endblock %}</title>
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "basic_style.css" %}">
+    {% block header %}
+    {% endblock %}
 </head>
 <body>
     <h1>Crowds Suck, Watch our site for up to date info on where they aren't</h1>

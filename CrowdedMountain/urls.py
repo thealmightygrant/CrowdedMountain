@@ -3,7 +3,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^cdot_count$', 'CrowdedMountain.apps.cdot_counting.views.ugly_count'),
+    url(r'^cdot_count/$', 'CrowdedMountain.apps.cdot_counting.views.ugly_count'),
     # Examples:
     # url(r'^$', 'CrowdedMountain.views.home', name='home'),
     # url(r'^CrowdedMountain/', include('CrowdedMountain.foo.urls')),

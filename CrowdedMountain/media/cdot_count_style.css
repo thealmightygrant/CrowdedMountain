@@ -1,0 +1,301 @@
+.container {
+    width: 100%;
+    position: relative;
+}
+
+.mountain-slider {
+    position: relative;
+    margin-top: 30px;
+    height: 490px;     /*predefined to set position of ul/s correctly*/
+}
+
+.mountain-slider ul {
+    list-style-type: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 140px;
+    overflow: hidden;
+    text-align: center;
+    pointer-events: none;   /*so that we can click through to the uls links*/
+}
+
+/*set up the containing links so that they are clickable*/
+.mountain-slider ul.mountain-current {  /*mountain-current class is set using javascript*/
+    pointer-events: auto;
+}
+
+.no-js .mountain-slider ul {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin: 0;
+    overflow: visible;
+}
+
+/* setup an inline block display with a width of 20% for each item */
+/* the translation shifts them 600%, which should be way off the page */
+.mountain-slider ul li {
+    display: inline-block;
+    padding: 20px;
+    width: 20%;
+    max-width: 300px;
+    transform: translateX(600%);
+    transition: opacity 0.2s linear;
+}
+
+/* no JS = no translation */
+.no-js .mountain-slider ul li {
+    transform: translateX(0);
+}
+
+/* style list links */
+.mountain-slider ul li a {
+    outline: none;
+    cursor: pointer;
+}
+
+/* style list items */
+.mountain-slider ul li h4 {
+    display: inline-block;
+    font-family: helvetica, sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 20px 10px 0;
+}
+
+/* animate the list item when hovering over it */
+.mountain-slider ul li:hover {
+    opacity: 0.7;
+}
+
+.mountain-slider nav {
+    position: relative;
+    top: 400px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    border-top: 5px solid #333;
+}
+
+.no-js nav {
+    display: none;
+}
+
+.mountain-slider nav a {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    padding: 40px 30px 30px 34px;
+    position: relative;
+    color: #888;
+    outline: none;
+    transition: color 0.2s linear;
+}
+
+.mountain-slider nav a:hover,
+.mountain-slider nav a.mountain-selected {
+    color: #000;
+}
+
+/* works up to this point, looks like mountain-selected and mountain-current are not getting setup */
+
+/* creating the triangle above the nav bar */
+.mountain-slider nav a.mountain-selected:after,
+.mountain-slider nav a.mountain-selected:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+
+.mountain-slider nav a.mountain-selected:after {
+    border-color: transparent;
+    border-top-color: #fff;
+    border-width: 20px;
+    left: 50%;
+    margin-left: -20px;
+}
+
+.mountain-slider nav a.mountain-selected:before {
+    border-color: transparent;
+    border-top-color: #333;
+    border-width: 27px;
+    left: 50%;
+    margin-left: -27px;
+}
+
+
+.mountain-slider ul:first-child li,
+.no-js .mi-slider ul li {
+    animation: scaleUp 350ms ease-in-out both;
+}
+
+@keyframes scaleUp {
+    0% { transform: translateX(0) scale(0); }
+    100% { transform: translateX(0) scale(1); }
+}
+
+/* setup delay for keyframe animation */
+
+
+.mountain-slider ul:first-child li:first-child {
+    animation-delay: 70ms;
+}
+
+.mountain-slider ul:first-child li:nth-child(2) {
+    animation-delay: 140ms;
+}
+
+.mountain-slider ul:first-child li:nth-child(3) {
+    animation-delay: 210ms;
+}
+
+.mountain-slider ul:first-child li:nth-child(4) {
+    animation-delay: 280ms;
+}
+
+.mountain-slider ul:first-child li:nth-child(5) {
+    animation-delay: 350ms;
+}
+
+/*define four list classes for sliding animations */
+
+
+.mountain-slider ul.mountain-moveFromRight li {
+    animation: moveFromRight 340ms ease-in-out both;
+}
+
+.mountain-slider ul.mountain-moveFromLeft li {
+    animation: moveFromLeft 340ms ease-in-out both;
+}
+
+.mountain-slider ul.mountain-moveToRight li {
+    animation: moveToRight 340ms ease-in-out both;
+}
+
+.mountain-slider ul.mountain-moveToLeft li {
+    animation: moveToLeft 340ms ease-in-out both;
+}
+
+
+/* accordion animation delays */
+
+
+.mountain-slider ul.mountain-moveToLeft li:nth-child(1),
+.mountain-slider ul.mountain-moveFromRight li:nth-child(1),
+.mountain-slider ul.mountain-moveToRight li:nth-last-child(1),
+.mountain-slider ul.mountain-moveFromLeft li:nth-last-child(1) {
+    animation-delay: 0ms;
+}
+
+.mountain-slider ul.mountain-moveToLeft li:nth-child(2),
+.mountain-slider ul.mountain-moveFromRight li:nth-child(2),
+.mountain-slider ul.mountain-moveToRight li:nth-last-child(2),
+.mountain-slider ul.mountain-moveFromLeft li:nth-last-child(2) {
+    animation-delay: 70ms;
+}
+
+.mountain-slider ul.mountain-moveToLeft li:nth-child(3),
+.mountain-slider ul.mountain-moveFromRight li:nth-child(3),
+.mountain-slider ul.mountain-moveToRight li:nth-last-child(3),
+.mountain-slider ul.mountain-moveFromLeft li:nth-last-child(3) {
+    animation-delay: 140ms;
+}
+
+.mountain-slider ul.mountain-moveToLeft li:nth-child(4),
+.mountain-slider ul.mountain-moveFromRight li:nth-child(4),
+.mountain-slider ul.mountain-moveToRight li:nth-last-child(4),
+.mountain-slider ul.mountain-moveFromLeft li:nth-last-child(4) {
+    animation-delay: 210ms;
+}
+
+.mountain-slider ul.mountain-moveToLeft li:nth-child(5),
+.mountain-slider ul.mountain-moveFromRight li:nth-child(5),
+.mountain-slider ul.mountain-moveToRight li:nth-last-child(5),
+.mountain-slider ul.mountain-moveFromLeft li:nth-last-child(5) {
+    animation-delay: 280ms;
+}
+
+/* define sliding animations */
+
+
+@keyframes moveFromRight {
+    0% { transform: translateX(600%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes moveFromLeft {
+    0% { transform: translateX(-600%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes moveToRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(600%); }
+}
+
+@keyframes moveToLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-600%); }
+}
+
+/* query for size of screen and adjust to smaller comp screens */
+
+
+@media screen and (max-width: 910px){
+    .mountain-slider nav {
+	max-width: 90%;
+    }
+    
+    .mountain-slider nav a {
+	font-size: 12px;
+	padding: 40px 10px 30px 14px;
+    }
+}
+
+@media screen and (max-width: 740px){
+    .mountain-slider {
+	height: 300px;
+    }
+    
+    .mountain-slider nav {
+	top: 220px;
+    }
+}
+
+
+
+/* query for size and adjust for touch screens */
+
+
+@media screen and (max-width: 490px){
+    .mountain-slider {
+	text-align: center;
+	height: auto;
+    }
+    
+    .mountain-slider ul {
+	position: relative;
+	display: inline;
+	bottom: auto;
+	pointer-events: auto;
+    }
+    
+    .mountain-slider ul li {
+	animation: none !important;
+	transform: translateX(0) !important;
+	padding: 10px 3px;
+	min-width: 140px;
+    }
+
+    .mountain-slider nav {
+	display: none;
+    }
+}

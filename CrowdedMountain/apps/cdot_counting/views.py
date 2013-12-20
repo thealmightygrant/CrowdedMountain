@@ -12,9 +12,18 @@ import datetime
 #    as its first paramter and returns an instance of an HttpResponse
 
 def ugly_count(request):
+    abasin = 0
+    loveland = 0
+    keystone = 0
     breck = 0
+    beaver_creek = 0
     vail = 0
     t = get_template('cdot_template.html')
-    html = t.render(Context({'breck': breck, 'vail': vail}))
+    html = t.render(Context({'breck': breck,
+                             'abasin': abasin,
+                             'loveland': loveland,
+                             'keystone': keystone,
+                             'beaver_creek': beaver_creek,
+                             'vail': vail}))
     return HttpResponse(html)
 

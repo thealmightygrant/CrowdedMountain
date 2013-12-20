@@ -1,4 +1,7 @@
 # Django settings for CrowdedMountain project.
+import os
+PROJECT_DIR = os.path.dirname(__file__)
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -66,15 +69,16 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
+STATIC_URL = '/media/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, 'media'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -109,7 +113,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'CrowdedMountain.urls'
 
 TEMPLATE_DIRS = (
-    '/home/sherrick/CrowdedMountain/CrowdedMountain/templates',
+    '/home/sherrick/external_projects/CrowdedMountain/CrowdedMountain/templates',
 
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
