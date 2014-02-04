@@ -42,4 +42,5 @@ class cdotXMLReader:
 if __name__ == "__main__":
     reader = cdotXMLReader(cdot_url = 'https://data.cotrip.org/xml/speed_segments.xml')
     parser = cdotXMLParser(reader.data)
+    parser.prune_data()
     parser.print_xml()
