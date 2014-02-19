@@ -4,14 +4,13 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
-
 class cdotXMLParser:
 
     def __init__(self, data=None):
         self.data = data
         self.root = ET.fromstring(self.data)
 
-        #remove '{http://www.cotrip.org/schema/speed}' from start of each tag
+        #remove workspace, '{http://www.cotrip.org/schema/speed}' from start of each tag
         for node in self.root.iter():
             node.tag = node.tag[36:]
 
@@ -33,6 +32,9 @@ class cdotXMLParser:
             if start < 177.0 or end > 239.7:
                 self.root.remove(node)
 
+    def split_by_resort(self):
+        #Find the resorts between each mile marker and store data
+        pass
 
     def print_xml(self):
         for node in self.root.iter():
