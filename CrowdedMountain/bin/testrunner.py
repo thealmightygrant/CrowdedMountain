@@ -10,11 +10,12 @@ class ExcludeAppsTestSuiteRunner(DjangoTestSuiteRunner):
         if not test_labels:
             # No appnames specified on the command line, so we run all
             # tests, but remove those which we know are troublesome.
-            APPS_TO_NOT_RUN = (
-                'CrowdedMountain.apps.cdot_counting',
+            APPS_TO_NOT_RUN = ('',
+                #'CrowdedMountain.apps.cdot_counting',
                 )
             test_labels = [app for app in settings.INSTALLED_APPS
                            if not app in APPS_TO_NOT_RUN
                            and not app.startswith('django.')]
+            print test_labels
         return super(ExcludeAppsTestSuiteRunner, self).run_tests(
             test_labels, extra_tests, **kwargs)

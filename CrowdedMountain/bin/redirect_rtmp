@@ -1,0 +1,6 @@
+#!/bin/bash
+iptables -t nat -A OUTPUT -p tcp --dport 1935 -m owner \! --uid-owner root -j REDIRECT
+
+
+#run this, then run rtmpsrv, then open the rtmp stream, it will spit out the rtmpdump command, then run end_redirect_rtmp
+
