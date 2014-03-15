@@ -4,6 +4,8 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
+from cdot_counting.models import HighwaySegment
+
 class cdotXMLParser:
 
     def __init__(self, data=None):
@@ -31,6 +33,11 @@ class cdotXMLParser:
                 start, end = end, start
             if start < 177.0 or end > 239.7:
                 self.root.remove(node)
+
+
+    def store_highway_data(self):
+        pass
+        
 
     def split_by_resort(self):
         #Find the resorts between each mile marker and store data

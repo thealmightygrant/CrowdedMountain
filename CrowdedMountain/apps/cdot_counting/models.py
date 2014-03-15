@@ -16,6 +16,7 @@ class Location(models.Model):
 
 #collected every two minutes from cdot
 class HighwaySegment(models.Model):
+    highway_name = models.CharField(max_length=20)
     start_mile_marker = models.DecimalField(max_digits=8, decimal_places=2)
     end_mile_marker = models.DecimalField(max_digits=8, decimal_places=2)
     direction = models.CharField(max_length=10)
@@ -27,10 +28,15 @@ class HighwaySegment(models.Model):
     avg_volume = models.IntegerField(blank=True, null=True) # in number of cars
     avg_occupancy = models.IntegerField(blank=True, null=True) # in percentage over last 2 minutes
 
+    class Meta:
+        ordering = ['highway_name','datetime_calculated']
+
 
 class Resort(models.Model):
     name = models.CharField(max_length=50)
     location = models.ForeignKey(Location)
+    add_segments = models.ManyToManyField(HighwaySegment, related_name='add_segments')
+    sub_segments = models.ManyToManyField(HighwaySegment, related_name='sub_segments')
 
     def __unicode__(self):
         return self.name

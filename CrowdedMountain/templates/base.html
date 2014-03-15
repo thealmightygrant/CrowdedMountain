@@ -1,14 +1,15 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en" class="no-js">
 <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Mountain Crowd Estimates{% endblock %}</title>
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "basic_style.css" %}">
     {% block header %}
     {% endblock %}
 </head>
 <body>
-    <h1>Crowds Suck, Watch our site for up to date info on where they aren't</h1>
+    <h1>Avoid the crowds.</h1>
+    <h2>Use our site for up to date info on where the people aren't.</h2>
 
     <!-- define the parts of the code that are different 
 	 between the different pages with block tags -->
@@ -18,7 +19,7 @@
 
     {% block footer %}
     <hr>
-    <p>Thanks for visiting my site.</p>
+    <p>This site produced by the amazing people at Snow Yeti Software LLC.</p>
     {% endblock %}
 </body>
 </html>
