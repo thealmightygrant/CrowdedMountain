@@ -4,7 +4,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^cdot_count/$', 'CrowdedMountain.apps.cdot_counting.views.ugly_count', name='CDOT count'),
-    url(r'^$', 'CrowdedMountain.views.home', name='home'),
+    url(r'^$', 'CrowdedMountain.apps.mountain_chooser.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
 
     # Examples:

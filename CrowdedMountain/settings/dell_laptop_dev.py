@@ -1,9 +1,8 @@
 from .base import *
 
-#INSTALLED_APPS += (
-#    'raven.contrib.django',
-#)
-
+INSTALLED_APPS += (
+    'CrowdedMountain.apps.mountain_chooser',
+)
 
 #DATABASES.update({
 #         'some_name': {
