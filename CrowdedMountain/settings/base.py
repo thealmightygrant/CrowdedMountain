@@ -1,9 +1,8 @@
 # Django settings for CrowdedMountain project.
-import os
-import sys
-PROJECT_DIR = os.path.dirname(__file__)
+import os.path
+PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), os.path.pardir))
 
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', False)
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -24,7 +23,8 @@ DATABASES = {
     }
 }
 
-TEST_RUNNER = 'CrowdedMountain.bin.testrunner.ExcludeAppsTestSuiteRunner'
+#TEST_RUNNER = 'CrowdedMountain.bin.testrunner.ExcludeAppsTestSuiteRunner'
+#when creating this TestRunner it can't find any of the apps for some reason.
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#allowed-hosts
@@ -55,7 +55,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/sherrick/external_projects/CrowdedMountain/CrowdedMountain/media/'
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -127,9 +127,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'south',
     'CrowdedMountain.apps.cdot_counting',
     'django.contrib.admin',
+    'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

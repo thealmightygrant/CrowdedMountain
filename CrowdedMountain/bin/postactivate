@@ -1,0 +1,2 @@
+export DJANGO_SETTINGS_MODULE=settings.dell_laptop_dev
+export DJANGO_DEBUG=True
