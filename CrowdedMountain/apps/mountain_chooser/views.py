@@ -12,6 +12,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 #    as its first paramter and returns an instance of an HttpResponse
 
 def home(request):
-    t = get_template('base.html')
+    t = get_template('home.html')
     html = t.render(Context({}))
     return HttpResponse(html)
