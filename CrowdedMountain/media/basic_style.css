@@ -1,3 +1,5 @@
+/* used by the base.html template that is inherited by everything */
+
 body {
 /*background-image:url('mountain1.jpg');
 background-size: cover;*/

@@ -1,0 +1,5 @@
+a.test {
+    font-weight: bold;
+    margin: 10px;  /* can be set with margin-top, bottom, left, right as well */
+    padding: 20px;
+}
