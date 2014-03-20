@@ -3,3 +3,27 @@ a.test {
     margin: 10px;  /* can be set with margin-top, bottom, left, right as well */
     padding: 20px;
 }
+
+/* # for id, . for class */
+
+#mountain_images {
+    position: relative;
+    height: 432px;
+    width: 807px;
+    margin: 0 auto;
+}
+
+#mountain_images img {
+    position: absolute;
+    left: 0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    cursor: pointer;
+}
+
+#mountain_images img.transparent {
+    opacity: 0;
+}
+

@@ -7,14 +7,14 @@
     //declare a function named MountainSlider
     //we are declaring the property jQuery.MountainSlider
 
-    $.MountainSlider = function( options, element ) {
+    $.MountainSelector = function( options, element ) {
 	//any element that is passed in will be accessible as this.$el
         this.$el = $( element );
 	//we pass any options to the existing jquery init function
         this._init( options );
     };
 
-    $.MountainSlider.prototype = {
+    $.MountainSelector.prototype = {
 
 	_init : function( options ) {
 	    
@@ -159,7 +159,7 @@
     //we are adding the function mountainslider to the $.fn so that it is now a jQuery object method
     $.fn.mountainslider = function( options ) {
 	//
-        var instance = $.data( this, 'mountainslider' );
+        var instance = $.data( this, 'mountainselector' );
         if ( typeof options === 'string' ) {
             var args = Array.prototype.slice.call( arguments, 1 );
             this.each(function() {
@@ -168,7 +168,7 @@
         }
         else {
             this.each(function() {
-                instance ? instance._init() : instance = $.data( this, 'mountainslider', new $.MountainSlider( options, this ) );
+                instance ? instance._init() : instance = $.data( this, 'mountainslider', new $.MountainSelector( options, this ) );
             });
         }
         return instance;

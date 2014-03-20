@@ -8,28 +8,59 @@
 
 {% block content %}
 
-<a href="/cdot_count">Some big old bastard mountain</a>
-<script type="text/javascript" src="{% static "jquery-1.10.2.js" %}"></script>
-<script>
-  $(document).ready(function() {
-  
-      $( "a" ).addClass("test");
-      $( "a" ).click(function( event ) {
-  
-          alert( "Thanks for visiting!" );
-          $( this ).hide("slow");
-      
-      });
-  
-  });
-</script>
+<!--<a href="/cdot_count">Some big old bastard mountain</a>-->
+
+<div id="mountain-selector">
+<div id="mountain_images">
+  <img id="abasin" src="{% static "abasin.jpg" %}"/>
+  <img id="keystone" src="{% static "keystone.jpg" %}"/>
+  <img id="breck" src="{% static "breck.jpg" %}"/>
+  <img id="vail" src="{% static "vail.jpg" %}"/>
+  <img id="beaver" src="{% static "beaver.jpg" %}"/>
+</div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static "jquery.mountain_selector.js" %}"></script>
 <!--<script>
-    $(function() {
-    
-    $( '#mountain-slider' ).mountainslider();
-    
-    });
-    </script>-->
+  $(function() {
+  
+  $( '#mountain-selector' ).mountainselector();
+
+  });
+</script>-->
+ <script>
+  var count = 0;
+  $(document).ready(function() {
+      $("#mountain_images img").click(function() {
+           var $mountain_img_add;
+           var $mountain_img_sub;
+           if (count % 5 === 0) {
+               $mountain_img_sub = $("#mountain_images #beaver")
+               $mountain_img_add = $("#mountain_images #vail")
+           }
+           else if (count % 5 === 1) {
+               $mountain_img_sub = $("#mountain_images #vail")
+               $mountain_img_add = $("#mountain_images #breck")
+           }
+           else if (count % 5 === 2) {
+               $mountain_img_sub = $("#mountain_images #breck")
+               $mountain_img_add = $("#mountain_images #keystone")
+           }
+           else if (count % 5 === 3) {
+               $mountain_img_sub = $("#mountain_images #keystone")
+               $mountain_img_add = $("#mountain_images #abasin")
+           }
+           else if (count % 5 === 4) {
+               $mountain_img_sub = $("#mountain_images #abasin")
+               $mountain_img_add = $("#mountain_images #beaver")
+           }
+           count++;
+           $mountain_img_sub.addClass("transparent");
+           $mountain_img_add.removeClass("transparent");
+      });
+  });
+</script>  
 {% endblock %}
 
 
