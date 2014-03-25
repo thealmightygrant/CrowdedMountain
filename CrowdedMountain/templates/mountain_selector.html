@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block header %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "home_style.css" %}">
+<script type="text/javascript" src="{% static "modernizr-2.7.1.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+
+<!--<a href="/cdot_count">Some big old bastard mountain</a>-->
+
+<div id="mountain-selector">
+<div id="mountain_images">
+  <img id="abasin" src="{% static "abasin.jpg" %}"/>
+  <img id="keystone" src="{% static "keystone.jpg" %}"/>
+  <img id="breck" src="{% static "breck.jpg" %}"/>
+  <img id="vail" src="{% static "vail.jpg" %}"/>
+  <img id="beaver" src="{% static "beaver.jpg" %}"/>
+</div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static "jquery.mountain_selector.js" %}"></script>
+<!--<script>
+  $(function() {
+  
+  $( '#mountain-selector' ).mountainselector();
+
+  });
+</script>-->
+ <script>
+  var count = 0;
+  $(document).ready(function() {
+      $("#mountain_images img").click(function() {
+           var $mountain_img_add;
+           var $mountain_img_sub;
+           if (count % 5 === 0) {
+               $mountain_img_sub = $("#mountain_images #beaver")
+               $mountain_img_add = $("#mountain_images #vail")
+           }
+           else if (count % 5 === 1) {
+               $mountain_img_sub = $("#mountain_images #vail")
+               $mountain_img_add = $("#mountain_images #breck")
+           }
+           else if (count % 5 === 2) {
+               $mountain_img_sub = $("#mountain_images #breck")
+               $mountain_img_add = $("#mountain_images #keystone")
+           }
+           else if (count % 5 === 3) {
+               $mountain_img_sub = $("#mountain_images #keystone")
+               $mountain_img_add = $("#mountain_images #abasin")
+           }
+           else if (count % 5 === 4) {
+               $mountain_img_sub = $("#mountain_images #abasin")
+               $mountain_img_add = $("#mountain_images #beaver")
+           }
+           count++;
+           $mountain_img_sub.addClass("transparent");
+           $mountain_img_add.removeClass("transparent");
+      });
+  });
+</script>  
+{% endblock %}
+
+
+<!-- Desired Features: 
+
+     1. Estimate of the number of people at each mountain 
+     a. current (updated every 2 minutes, dynamic model)
+     b. future (hourly, daily [weekend, 5 days, 10 days, holidays?])
+     i. include errors (hourly), average error per day
+     ii. past information [for the same time of year and holidays last year]
+     2. Estimate of the number of people on each lift at the current time
+     3. Upcoming holidays and events at each mountain [both a warning and advertisement in forecasts]
+
+     
+  -- Start with the big ones: Vail, Beaver Creek, Copper Mountain, Breckenridge
+  -- What are the most useful stats?  
+     ** ski-able area by color of run / number of people
+     ** total ski-able area / number of people
+     ** snow / ~ number of people there currently
+     ** snow / ski-able terrain for each skill level
+     ** total terrain park area / number of people
+     ** efficiency / throughput (speed of lifts = # peoontedhple on whole lift / second)
+     (total # liftchairs * max # people on one chair) / (2 * time to top of lift)
+     
+     
+     Information needed:
+     ** speed of lifts (varies considerably, maybe avg. speed)
+     ** capacity of lifts
+     ** conditions in which lifts will shutdown
+     ** realtime weather data
+     ** realtime traffic data
+     ** realtime updates on when lifts are up or down (if available)
+     ** relationship between skill level and amount of snow or people at a resort
+     ** predicted optimal travel times back to Denver
+     ** dates when there are more likely to be locals vs out of towners
+     ** upcoming holidays for southwestern states
+     ** demographics for skiing in Colorado (which states?  genders?  age?  salary range?  )
+     ** historical data for ski resort person counts with corresponding amount of snow, lifts open, traffic, ski-able terrain, park terrain, school holidays in Colorado, Texas, California, Arizona, New Mexico, Nevada
+
+     Next steps:
+     
+     ** estimate current numbers from realtime car data
+     ** these numbers are available every 2 minutes
+     ** get historical ski resort approximations from cotrip
+     ** these numbers are available monthly
+     ** download numbers for last 5 years from cotrip
+     ** parse into cdot estimates of attendace numbers for each resort
+     ** upload cdot estimates into database
+     ** classify each hour/day/resort
+
+     
+  -->

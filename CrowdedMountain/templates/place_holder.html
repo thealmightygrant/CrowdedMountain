@@ -1,0 +1,27 @@
+{% extends "base_html5.html" %}
+
+{% block header %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "place_holder_style.css" %}">
+<script type="text/javascript" src="{% static "modernizr-2.7.1.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+<!-- start of first part of scrolling 1 pager -->
+<div class="line"></div>
+<article id="article1">
+  <h2>Mountain Map</h2>
+  <div class="line"></div>
+  <div class="articleBody clear">
+    <figure> <!-- marks data, usually an image that is a part of the article -->
+      <img id="yeti-large" src="{% static "Snow Yeti Large.jpg" %}"/>
+    </figure>
+    <p>This site estimates the number of skiers based on publically available data</p>
+  </div>
+</article>
+{% endblock %}
+{% block javascript_includes %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static "place_holder.js" %}"></script>
+<script type="text/javascript" src="{% static "jquery.scrollTo-1.4.3.1-min.js" %}"></script>
+{% endblock %}

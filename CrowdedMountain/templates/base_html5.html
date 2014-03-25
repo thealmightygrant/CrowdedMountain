@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html lang="en" class="no-js">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}Mountain Crowd Estimates{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "basic_style.css" %}">
+    {% block header %}
+    {% endblock %}
+    <!-- No HTML5 shiv needed, included in Modernizr -->
+</head>
+<body>
+  <section id="page">
+    <header>
+      {% block headers %}
+      <h1>Snow Yeti Logo.</h1>
+      <h3>Use our site for up to date info on where the people aren't.</h3>
+      {% endblock %}
+      <nav class="clear"> <!-- marks the main site navigation, no idea why it has the clear class --> 
+	{% block nav %}
+	<ul>
+	  <li><a href="#article1">Article 1</a></li>
+	  <li><a href="#article2">Article 2</a></li>
+	  <li><a href="#article3">Article 3</a></li>
+	</ul>
+	{% endblock %}
+      </nav>
+    </header>
+      <!-- define the parts of the code that are different 
+	   between the different pages with block tags -->
+
+    {% block content %}<!-- put default content in here, can always be overwritten --> 
+    {% endblock %}
+
+    <footer>
+    {% block footer %}
+    <div class="line"></div>
+    <p>This site produced by the amazing people at Snow Yeti Software LLC.</p>
+    <p>Copyright 2014 - Snow Yeti Software LLC</p>
+    {% endblock %}
+    </footer>
+    </section>
+    {% block javascript_includes %}
+    {% endblock %}
+</body>
+</html>
