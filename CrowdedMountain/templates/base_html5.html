@@ -13,18 +13,18 @@
   <section id="page">
     <header>
       {% block headers %}
-      <h1>Snow Yeti Logo.</h1>
-      <h3>Use our site for up to date info on where the people aren't.</h3>
+      <h1>The Powder Map.</h1>
       {% endblock %}
       <nav class="clear"> <!-- marks the main site navigation, no idea why it has the clear class --> 
 	{% block nav %}
 	<ul>
-	  <li><a href="#article1">Article 1</a></li>
-	  <li><a href="#article2">Article 2</a></li>
-	  <li><a href="#article3">Article 3</a></li>
+	  <li><a href="#article1">Current Mountain Conditions</a></li>
+	  <li><a href="#article2">Mountain Crowd Forecasts</a></li>
+	  <li><a href="#article3">Traffic Forecasts</a></li>
 	</ul>
 	{% endblock %}
       </nav>
+      <!--<h3>Use our site for up to date info on which mountain and lifts the people aren't at.</h3>-->
     </header>
       <!-- define the parts of the code that are different 
 	   between the different pages with block tags -->
@@ -35,7 +35,6 @@
     <footer>
     {% block footer %}
     <div class="line"></div>
-    <p>This site produced by the amazing people at Snow Yeti Software LLC.</p>
     <p>Copyright 2014 - Snow Yeti Software LLC</p>
     {% endblock %}
     </footer>
