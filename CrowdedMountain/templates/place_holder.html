@@ -2,16 +2,17 @@
 
 {% block header %}
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static "place_holder_style.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "place_holder_style2.css" %}">
 <script type="text/javascript" src="{% static "modernizr-2.7.1.js" %}"></script>
 {% endblock %}
 
 {% block content %}
 <!-- start of first part of scrolling 1 pager -->
 <div class="line"></div>
-<article id="article1">
-  <h2>Current Mountain Conditions</h2>
-  <div class="line"></div>
+<article id="article1" class="panel">
+  <div class="content">
+    <h2>Current Mountain Conditions</h2>
+    <div class="line"></div>
     <figure> <!-- marks data, usually an image that is a part of the article -->
       <img id="yeti-large" src="{% static "mountain3.jpg" %}"/>
     </figure>
@@ -20,10 +21,12 @@
       Don't get stuck in the crowds!  Check our site from the slopes for the best lift and area
       to hit up next.
     </p>
+  </div>
 </article>
-<article id="article2">
-  <h2>Mountain Crowd Forecasts</h2>
-  <div class="line"></div>
+<article id="article2" class="panel">
+  <div class="content">
+    <h2>Mountain Crowd Forecasts</h2>
+    <div class="line"></div>
     <figure> <!-- marks data, usually an image that is a part of the article -->
       <img id="yeti-large" src="{% static "mountain2.jpg" %}"/>
     </figure>
@@ -31,10 +34,12 @@
       Map to discover, where the crowds will be during your upcoming vacation.  You have a lot of
       choices for mountains, and we want you to make the right one!
     </p>
+  </div>
 </article>
-<article id="article3">
-  <h2>Traffic and Weather Forecasts</h2>
-  <div class="line"></div>
+<article id="article3" class="panel">
+  <div class="content">
+    <h2>Traffic and Weather Forecasts</h2>
+    <div class="line"></div>
     <figure> <!-- marks data, usually an image that is a part of the article -->
       <img id="yeti-large" src="{% static "mountain1.jpg" %}"/>
     </figure>
@@ -42,6 +47,7 @@
       time to head home or to the airport from the mountains.  Just check our site and lunch and ski 
       worry free.  No more 4 hour waits at the tunnel.  Play it smart.  Use the Powder Map.
     </p>
+  </div>
 </article>
 {% endblock %}
 {% block javascript_includes %}

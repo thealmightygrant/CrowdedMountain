@@ -15,7 +15,11 @@
       {% block headers %}
       <h1>The Powder Map.</h1>
       {% endblock %}
-      <nav class="clear"> <!-- marks the main site navigation, no idea why it has the clear class --> 
+      <nav class="clear"> <!-- marks the main site navigation, no idea why it has the clear class -->
+	<!-- SOLUTION: floated objects do not add to the height of the object they reside in (properly)
+	  so they need to be "cleared" in order to have the containing object account for their heights -->
+	<!-- Usually clear is used to tell another object to not "float" around an object that is float
+	     and to instead hop on down to the bottom below it. -->
 	{% block nav %}
 	<ul>
 	  <li><a href="#article1">Current Mountain Conditions</a></li>
