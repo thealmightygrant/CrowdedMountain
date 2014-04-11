@@ -1,7 +1,7 @@
 from .base import *
 
 INSTALLED_APPS += (
-    'CrowdedMountain.apps.mountain_chooser',
+    'PowdrMap.apps.mountain_chooser',
 )
 
 DATABASES = {

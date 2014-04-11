@@ -1,4 +1,4 @@
-# Django settings for CrowdedMountain project.
+# Django settings for PowdrMap project.
 import os.path
 PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname( __file__ ), os.path.pardir))
 
@@ -12,7 +12,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-#TEST_RUNNER = 'CrowdedMountain.bin.testrunner.ExcludeAppsTestSuiteRunner'
+#TEST_RUNNER = 'PowdrMap.bin.testrunner.ExcludeAppsTestSuiteRunner'
 #when creating this TestRunner it can't find any of the apps for some reason.
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -100,10 +100,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'CrowdedMountain.urls'
+ROOT_URLCONF = 'PowdrMap.urls'
 
 TEMPLATE_DIRS = (
-    '/home/sherrick/external_projects/CrowdedMountain/CrowdedMountain/templates',
+    '/home/sherrick/external_projects/PowdrMap/PowdrMap/templates',
 
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -116,7 +116,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'CrowdedMountain.apps.cdot_counting',
+    'PowdrMap.apps.cdot_counting',
     'django.contrib.admin',
     'south',
     # Uncomment the next line to enable admin documentation:

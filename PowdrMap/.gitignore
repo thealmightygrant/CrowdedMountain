@@ -1,9 +1,6 @@
 # compiled python files
 *.pyc
 
-# Distribution / packaging
-mountain_env/
-
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
