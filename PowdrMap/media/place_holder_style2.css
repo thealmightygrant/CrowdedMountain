@@ -1,3 +1,6 @@
+/* Based on tutorial at: http://tutorialzine.com/2010/02/html5-css3-website-template/ */
+/* # for id, . for class */
+
 header, footer,
 article, section,
 hgroup, nav, 
@@ -5,8 +8,14 @@ figure{
     display: block;
 }
 
-/* Based on tutorial at: http://tutorialzine.com/2010/02/html5-css3-website-template/ */
-/* # for id, . for class */
+html{
+    background: url(images/mountain1.jpg) no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 
 article .line {
     /* make the dividing line inside of the article tag darker */
@@ -99,8 +108,11 @@ nav, article, nav ul li a, figure {
     position:relative;
 }
 
+
+
 article {
     background-color: #C2EFFF;
+    /*background: url(mountain1.jpg);*/
     margin: 3em 0;
     padding: 20px;
 
@@ -111,7 +123,7 @@ article {
 
 article img.bg_img {
   /* Set rules to fill background */
-  min-height: 100%;
+  min-height: 60%;
   min-width: 1024px;
 	
   /* Set up proportionate scaling */
