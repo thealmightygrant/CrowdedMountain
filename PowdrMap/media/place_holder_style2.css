@@ -20,7 +20,7 @@ footer .line {
 }
 
 header {
-    position: absolute;
+    position: fixed;
     /*specifies the stack order of an element, think of 
       ordering like in powerpoint drawings, higher means on top */
     z-index: 2000;
@@ -32,7 +32,7 @@ header {
 header h1 {
     
     font-size: 30px;
-    font-wright: 400;
+    font-weight: 800;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 0px, 1px, 1px, rgba(0,0,0,0.3);
     padding: 20px;
@@ -93,8 +93,8 @@ nav, article, nav ul li a, figure {
     border-radius: 10px;
 }
 
-#page{
-    width:960px;
+#interior_page{
+    width: 60%;
     margin:0 auto;
     position:relative;
 }
@@ -102,24 +102,36 @@ nav, article, nav ul li a, figure {
 article {
     background-color: #C2EFFF;
     margin: 3em 0;
-    /*padding: 20px;*/
+    padding: 20px;
 
     font-style: bold;
 
     /*text-shadow:0 2px 0 black; */
 }
 
-article {
-    background-color: #C2EFFF;
-    margin: 3em 0;
-    padding: 20px;
-
-    font-weight: bold;
-
-    /*text-shadow:0 2px 0 black; */
+article img.bg_img {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  top: 0;
+  left: 0;
 }
 
-figure{
+
+/*@media screen and (max-width: 1024px) { 
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   
+  }
+}*/
+
+/*figure{
     border:3px solid #142830;
     float:right;
     height:300px;
@@ -131,13 +143,13 @@ figure{
 figure:hover {
     -moz-box-shadow:0 0 2px #4D7788;
     -webkit-box-shadow:0 0 2px #4D7788;
-    box-shadow:0 0 2px #4D7788;
-}
+    box-shadow:0 0 20px #4D7788;
+}*/
 
-figure img{
+/*figure img{ */
     /*moves within the image */
-    margin-left:-60px;
-}
+    /*margin-left:-60px;
+}*/
 
 footer{
     margin-bottom:30px;
