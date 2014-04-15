@@ -123,8 +123,7 @@ article {
 
 article img.bg_img {
   /* Set rules to fill background */
-  min-height: 60%;
-  min-width: 1024px;
+  max-height: 60%;
 	
   /* Set up proportionate scaling */
   width: 100%;
