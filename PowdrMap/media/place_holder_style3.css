@@ -24,9 +24,48 @@ p  { font-size: 18px; }
 article {
  
     height: 100vh;
-    background: url('images/mountain2.jpg') 0 0 no-repeat;
-    background-size: 100% auto;
     position: relative;  /* relative => functions as static yet acts as the primary container to any absolutely positioned element within it*/
+
+}
+
+#article1 { 
+
+    background: url('images/mountain2.jpg') 0 0 no-repeat; 
+    background-position: 0% 30%;
+
+}
+
+#article2 { 
+
+    /*width: 50vh;*/
+    background: url('images/snowboard_jump.jpg') center top no-repeat; 
+                /*url('images/Snow%20Yeti%20Small.jpg') 200px 200px no-repeat;*/ 
+    background-size: 100% auto;
+    background-position: 0 40%;
+    
+}
+
+#article3 { 
+
+    background: url('images/tunnel_traffic.jpg') 0 0 no-repeat; 
+    background-size: 100% auto;
+
+}
+
+.line {
+    height: 70px;
+    width: 100%;
+}
+
+#article12_line {
+
+    background-color: rgba(85, 85, 85, 0.7);
+
+}
+
+#article23_line {
+
+    background-color: rgba(135, 135, 135, 0.7);
 
 }
 
