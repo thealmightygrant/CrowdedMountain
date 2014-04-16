@@ -32,8 +32,8 @@
 		    scrollingNow = false;
 		    //call nav change function
 		    if (lasta != a){
-			$('#nav_' + lasta).addClass('in_view');
-			$('#nav_' + a).removeClass('in_view');
+			$('#nav_' + lasta).removeClass('in_view');
+			$('#nav_' + a).addClass('in_view');
 		    }
 		}
 	    });
