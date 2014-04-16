@@ -1,11 +1,18 @@
 /* Any import results in another call to the server, so stuff it all 
 in one CSS file to decrease the number of required calls to the server */
 
-html,body {
+html {
+    
+    overflow: hidden;
+    
+}
+
+body {
     
     font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
     height: 100%;
     width: 100%;
+    overflow: none;
     /* TODO: this affects too much shit, remove it */
     background-color: rgba(30, 30, 30, 1.0);
 
