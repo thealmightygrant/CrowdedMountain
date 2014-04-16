@@ -171,11 +171,15 @@ footer{
     padding-bottom:30px;
     text-align:center;
     font-size:0.825em;
+    background-image: url('images/SnowYetiSmall.png'); 
+    background-size: auto 50%; 
+    background-position: 68% 80%;
+    background-repeat: no-repeat;
 }
 
 footer p{
     color: rgba(255, 255, 255, 1.0);
-    padding-bottom:-2.5em;
+    padding-bottom:-5em;
     position:relative;
 }
 
