@@ -3,7 +3,7 @@ from django.contrib import admin
 #admin.autodiscover()
 
 urlpatterns = patterns('',
-    #url(r'^cdot_count/$', 'PowdrMap.apps.cdot_counting.views.ugly_count', name='CDOT count'),
+    url(r'^cdot_count/$', 'PowdrMap.apps.cdot_counting.views.ugly_count', name='CDOT count'),
     url(r'^$', 'PowdrMap.views.place_holder', name='place_holder'),
     #url(r'^admin/', include(admin.site.urls)),
 

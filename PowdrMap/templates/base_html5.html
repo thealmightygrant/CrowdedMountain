@@ -11,39 +11,16 @@
     <!-- No HTML5 shiv needed, included in Modernizr -->
   </head>
   <body>
-    <header>
-      {% block headers %}
-      <h1>The Powder Map.</h1>
-      {% endblock %}
-      <nav class="clear"> <!-- marks the main site navigation, no idea why it has the clear class -->
-	<!-- SOLUTION: floated objects do not add to the height of the object they reside in (properly)
-	     so they need to be "cleared" in order to have the containing object account for their heights -->
-	<!-- Usually clear is used to tell another object to not "float" around an object that is float
-	     and to instead hop on down to the bottom below it. -->
-	{% block nav %}
-	<ul>
-	  <li><a id="nav_0" href="#article1" class="in_view">Current Mountain Conditions</a></li>
-	  <li><a id="nav_1" href="#article2" class="">Mountain Crowd Forecasts</a></li>
-	  <li><a id="nav_2" href="#article3" class="">Traffic Forecasts</a></li>
-	</ul>
-	{% endblock %}
-      </nav>
-      <!--<h3>Use our site for up to date info on which mountain and lifts the people aren't at.</h3>-->
-    </header>
-    <section id="interior_page">
-      <!-- define the parts of the code that are different 
-	   between the different pages with block tags -->
+    {% block content %}<!-- put default content in here, can always be overwritten --> 
+    {% endblock %}
 
-      {% block content %}<!-- put default content in here, can always be overwritten --> 
-      {% endblock %}
+    {% block footer %}
+    <footer id="footer">
+      <div class="line"></div>
+      <p>Copyright 2014 - Snow Yeti Software LLC</p>
+    </footer>
+    {% endblock %}
 
-      <footer>
-	{% block footer %}
-	<div class="line"></div>
-	<p>Copyright 2014 - Snow Yeti Software LLC</p>
-	{% endblock %}
-      </footer>
-    </section>
     {% block javascript_includes %}
     {% endblock %}
   </body>

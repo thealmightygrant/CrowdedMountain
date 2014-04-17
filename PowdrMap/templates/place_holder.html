@@ -7,40 +7,72 @@
 {% endblock %}
 
 {% block content %}
-<!-- start of first part of scrolling 1 pager -->
-<article id="article1" class="panel">
-  <!--<img class="article_bg" src="{% static "images/mountain2.jpg" %}"/>-->
-  <div class="content">
-    <h2>Current Mountain Conditions</h2>
-    <p>This site estimates the current number of skiers in each region of each mountain
-      based on publically available data from traffic information, webcams, and social media.  
-      Don't get stuck in the crowds!  Check our site from the slopes for the best lift and runs
-      to attack next.
-    </p>
-  </div>
-</article>
-<div class="line" id="article12_line"></div>
-<article id="article2" class="panel">
-  <!--<img class="article_bg" src="{% static "images/mountain2.jpg" %}"/> -->
-  <div class="content">
-    <h2>Mountain Crowd Forecasts</h2>
-    <p>Don't just take a shot in the dark when planning your weekend or vacation.  Use the Powder
-      Map to discover, where the crowds will be during your upcoming vacation.  You have a lot of
-      choices for mountains, and we want you to make the right one!
-    </p>
-  </div>
-</article>
-<div class="line" id="article23_line"></div>
-<article id="article3" class="panel">
-  <div class="content">
-    <h2>Traffic and Weather Forecasts</h2>
-    <p>We've partnered with the best in weather and traffic in order to provide you with the optimal
-      time to head home or to the airport from the mountains.  Just check our site and lunch and ski 
-      worry free.  No more 4 hour waits at the tunnel.  Play it smart.  Use the Powder Map.
-    </p>
-  </div>
-</article>
+
+<header>
+  <h1>The Powder Map.</h1>
+  <nav class="clear"> <!-- marks the main site navigation, no idea why it has the clear class -->
+    <!-- SOLUTION: floated objects do not add to the height of the object they reside in (properly)
+	 so they need to be "cleared" in order to have the containing object account for their heights -->
+    <!-- Usually clear is used to tell another object to not "float" around an object that is float
+	 and to instead hop on down to the bottom below it. -->
+    {% block nav %}
+    <ul>
+      <li><a id="nav_0" href="#article1" class="in_view">Current Mountain Conditions</a></li>
+      <li><a id="nav_1" href="#article2" class="">Mountain Crowd Forecasts</a></li>
+      <li><a id="nav_2" href="#article3" class="">Traffic Forecasts</a></li>
+    </ul>
+    {% endblock %}
+  </nav>
+  <!--<h3>Use our site for up to date info on which mountain and lifts the people aren't at.</h3>-->
+</header>
+<section id="interior_page">
+  <!-- define the parts of the code that are different 
+       between the different pages with block tags -->
+  
+  
+  <!-- start of first part of scrolling 1 pager -->
+  <article id="article1" class="panel">
+    <!--<img class="article_bg" src="{% static "images/mountain2.jpg" %}"/>-->
+    <div class="content">
+      <h2>Current Mountain Conditions</h2>
+      <p>This site estimates the current number of skiers in each region of each mountain
+	based on publically available data from traffic information, webcams, and social media.  
+	Don't get stuck in the crowds!  Check our site from the slopes for the best lift and runs
+	to attack next.
+      </p>
+    </div>
+  </article>
+  <div class="line" id="article12_line"></div>
+  <article id="article2" class="panel">
+    <!--<img class="article_bg" src="{% static "images/mountain2.jpg" %}"/> -->
+    <div class="content">
+      <h2>Mountain Crowd Forecasts</h2>
+      <p>Don't just take a shot in the dark when planning your weekend or vacation.  Use the Powder
+	Map to discover, where the crowds will be during your upcoming vacation.  You have a lot of
+	choices for mountains, and we want you to make the right one!
+      </p>
+    </div>
+  </article>
+  <div class="line" id="article23_line"></div>
+  <article id="article3" class="panel">
+    <div class="content">
+      <h2>Traffic and Weather Forecasts</h2>
+      <p>We've partnered with the best in weather and traffic in order to provide you with the optimal
+	time to head home or to the airport from the mountains.  Just check our site and lunch and ski 
+	worry free.  No more 4 hour waits at the tunnel.  Play it smart.  Use the Powder Map.
+      </p>
+    </div>
+  </article>
+  <nav>
+    <span class="active"></span>
+    <span class=""></span>
+    <span class=""></span>
+    <span class="snow-yeti-link"></span>
+  </nav>
+</section>
 {% endblock %}
+
+
 {% block javascript_includes %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="{% static "place_holder.js" %}"></script>

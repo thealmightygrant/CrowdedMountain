@@ -1,7 +1,27 @@
 from .base import *
+import djcelery
+
+from datetime import timedelta
+
+djcelery.setup_loader()
+BROKER_URL = 'django://'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+CELERY_TIMEZONE = 'America/Denver'
+
+CELERYBEAT_SCHEDULE = {
+    'add_some_primes': {
+        'task': 'PowdrMap.apps.cdot_counting.tasks.gen_prime',
+        'schedule': timedelta(seconds=5),
+        'args': (1000,)
+    },
+}
+
 
 INSTALLED_APPS += (
     'PowdrMap.apps.mountain_chooser',
+    'PowdrMap.apps.cdot_counting',
+    'djcelery',
+    'kombu.transport.django',
 )
 
 

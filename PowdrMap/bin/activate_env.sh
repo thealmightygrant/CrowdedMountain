@@ -1,4 +1,6 @@
 #!/bin/bash
+set -o nounset  #don't allow undefined vars
+set -o errexit  #don't ignore failing commands
 
 PROJECT_NAME=CrowdedMountain
 PROJECT_HOME=$HOME/$PROJECT_NAME/$PROJECT_NAME
