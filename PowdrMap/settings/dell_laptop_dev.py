@@ -4,7 +4,8 @@ import djcelery
 from datetime import timedelta
 
 djcelery.setup_loader()
-BROKER_URL = 'django://'
+BACKEND = 'amqp'
+BROKER_URL = 'amqp://'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 CELERY_TIMEZONE = 'America/Denver'
 
