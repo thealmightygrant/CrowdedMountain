@@ -5,6 +5,7 @@ from django.contrib import admin
 urlpatterns = patterns('',
     url(r'^cdot_count/$', 'PowdrMap.apps.cdot_counting.views.ugly_count', name='CDOT count'),
     url(r'^$', 'PowdrMap.views.place_holder', name='place_holder'),
+    #url(r'^$', 'PowdrMap.views.huge_place_holder', name='huge_place_holder'),
     #url(r'^admin/', include(admin.site.urls)),
 
     # Examples:

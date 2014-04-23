@@ -21,3 +21,8 @@ def place_holder(request):
     html = t.render(Context({}))
     return HttpResponse(html)
 
+def huge_place_holder(request):
+    t = get_template('huge_layout.html')
+    html = t.render(Context({}))
+    return HttpResponse(html)
+

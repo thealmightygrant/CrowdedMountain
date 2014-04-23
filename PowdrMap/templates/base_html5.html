@@ -10,6 +10,7 @@
     {% endblock %}
     <!-- No HTML5 shiv needed, included in Modernizr -->
   </head>
+  {% block body %}
   <body>
     {% block content %}<!-- put default content in here, can always be overwritten --> 
     {% endblock %}
@@ -24,4 +25,5 @@
     {% block javascript_includes %}
     {% endblock %}
   </body>
+  {% endblock %}
 </html>

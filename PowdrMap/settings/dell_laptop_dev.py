@@ -7,6 +7,7 @@ djcelery.setup_loader()
 BACKEND = 'amqp'
 BROKER_URL = 'amqp://'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
 CELERY_TIMEZONE = 'America/Denver'
 
 CELERYBEAT_SCHEDULE = {

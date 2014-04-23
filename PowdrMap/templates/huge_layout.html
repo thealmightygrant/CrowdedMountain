@@ -1,0 +1,88 @@
+{% extends "base_html5.html" %}
+
+{% block header %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "huge_style.css" %}">
+<script type="text/javascript" src="{% static "modernizr-2.7.1.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+<nav>
+  <div class="bar">
+    <a id="logo" href="/"></a>
+    <a id="toggle" href="#">
+      <div class="nav_lines"></div>
+    </a>
+  </div>
+  <div class="nav_bg">
+    <ul>
+      <li><a href="/about" tabindex="-1">About.</a></li>
+      <li><a href="/news" tabindex="-1">News.</a></li>
+      <li><a href="/development_blog" tabindex="-1">Development Blog.</a></li>
+      <li><a href="/partners" tabindex="-1">Partners.</a></li>
+      <li><a href="/contact_us" tabindex="-1">Contact Us.</a></li>
+    </ul>
+  </div>
+</nav>
+<header>
+  <h1>The Powder Map.</h1>
+  <!-- marks the main site navigation, no idea why it has the clear class -->
+    <!-- SOLUTION: floated objects do not add to the height of the object they reside in (properly)
+	 so they need to be "cleared" in order to have the containing object account for their heights -->
+    <!-- Usually clear is used to tell another object to not "float" around an object that is float
+	 and to instead hop on down to the bottom below it. -->
+    <!--<h3>Use our site for up to date info on which mountain and lifts the people aren't at.</h3>-->
+</header>
+<section id="interior_page">
+  <!-- define the parts of the code that are different 
+       between the different pages with block tags -->
+  
+  
+  <!-- start of first part of scrolling 1 pager -->
+  <article id="article1" class="panel">
+    <!--<img class="article_bg" src="{% static "images/mountain2.jpg" %}"/>-->
+    <div class="content">
+      <h2>Current Mountain Conditions</h2>
+      <p>This site estimates the current number of skiers in each region of each mountain
+	based on publically available data from traffic information, webcams, and social media.  
+	Don't get stuck in the crowds!  Check our site from the slopes for the best lift and runs
+	to attack next.
+      </p>
+    </div>
+  </article>
+  <div class="line" id="article12_line"></div>
+  <article id="article2" class="panel">
+    <!--<img class="article_bg" src="{% static "images/mountain2.jpg" %}"/> -->
+    <div class="content">
+      <h2>Mountain Crowd Forecasts</h2>
+      <p>Don't just take a shot in the dark when planning your weekend or vacation.  Use the Powder
+	Map to discover, where the crowds will be during your upcoming vacation.  You have a lot of
+	choices for mountains, and we want you to make the right one!
+      </p>
+    </div>
+  </article>
+  <div class="line" id="article23_line"></div>
+  <article id="article3" class="panel">
+    <div class="content">
+      <h2>Traffic and Weather Forecasts</h2>
+      <p>We've partnered with the best in weather and traffic in order to provide you with the optimal
+	time to head home or to the airport from the mountains.  Just check our site and lunch and ski 
+	worry free.  No more 4 hour waits at the tunnel.  Play it smart.  Use the Powder Map.
+      </p>
+    </div>
+  </article>
+  <nav>
+    <span class="active"></span>
+    <span class=""></span>
+    <span class=""></span>
+    <span class="snow-yeti-link"></span>
+  </nav>
+</section>
+{% endblock %}
+
+
+{% block javascript_includes %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static "place_holder.js" %}"></script>
+<script type="text/javascript" src="{% static "jquery.balupton_scrollTo.js" %}"></script>
+{% endblock %}
