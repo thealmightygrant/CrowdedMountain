@@ -7,14 +7,13 @@ djcelery.setup_loader()
 BACKEND = 'amqp'
 BROKER_URL = 'amqp://'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+#CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
 CELERY_TIMEZONE = 'America/Denver'
 
 CELERYBEAT_SCHEDULE = {
-    'add_some_primes': {
-        'task': 'PowdrMap.apps.cdot_counting.tasks.gen_prime',
-        'schedule': timedelta(seconds=5),
-        'args': (1000,)
+    'grab_and_parse_xml': {
+        'task': 'PowdrMap.apps.cdot_counting.tasks.gen_speed_values',
+        'schedule': timedelta(minutes=2)
     },
 }
 

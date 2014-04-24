@@ -4,8 +4,6 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
-from cdot_counting.models import HighwaySegment
-
 class cdotXMLParser:
 
     def __init__(self, data=None):

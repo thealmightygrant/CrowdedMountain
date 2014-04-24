@@ -10,7 +10,9 @@ import urllib2
 class cdotXMLReader:
 
     def __init__(self, cdot_url = 'https://data.cotrip.org/xml/speed_segments.xml'):
-        f = open('cdot_info', 'r')
+        #TODO: move this and any other SECRETS to something more secure,
+        #       NOTE that this cannot work with a relative file location!
+        f = open('/home/sherrick/external_projects/PowdrMap/PowdrMap/apps/cdot_counting/cdot_info', 'r')
         username = f.readline().rstrip()
         password = f.readline().rstrip()
         pagehandle = self.open_cdot_feed(cdot_url, username, password)
