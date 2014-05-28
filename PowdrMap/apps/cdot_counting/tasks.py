@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from celery import task
 from xml_count import cdotXMLReader
-from parse_xml import cdotXMLParser
+from xml_parse import cdotXMLParser
 
 #each task must start with @app.task
 #the ignore_result is if we don't want the state to be stored

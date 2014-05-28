@@ -11,6 +11,10 @@ import datetime
 #  A view is just a Python function that takes an HttpRequest
 #    as its first paramter and returns an instance of an HttpResponse
 
+#Views functions as a controller for the app (in the MVC framework)
+#  -- Therefore, views should pass model data to templates
+#  -- Views should modify data coming from the model so that it can be displayed by the templates
+
 def ugly_count(request):
     abasin = 0
     loveland = 0
@@ -27,3 +31,13 @@ def ugly_count(request):
                              'vail': vail}))
     return HttpResponse(html)
 
+def convert_to_resort(resort_name):
+    def resort_hs_callback(resort_name):
+        basic_count = 0
+        for hs in resort_hs_dic[resort_name]:
+            basic_count += hs.avg_volume
+
+
+
+def resort_hs_callback(resort_name):
+    
