@@ -29,9 +29,16 @@ class HighwaySegment(models.Model):
     avg_volume = models.IntegerField(blank=True, null=True) # in number of cars
     avg_occupancy = models.IntegerField(blank=True, null=True) # in percentage over last 2 minutes
 
-    class Meta:
-        ordering = ['highway_name','datetime_calculated']
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        #don't allow for entries to have any negative numeric values
+        #particularly, we are worried about avg_volume and avg_occupancy
+        if self.avg_volume < 0 or self.avg_occupancy < 0:
+            raise ValidationError('Highway Segments must have an avg volume and avg occupancy')
+                
 
+    class Meta:
+        ordering = ['highway_name','start_mile_marker']
 
 class Resort(models.Model):
     name = models.CharField(max_length=50)

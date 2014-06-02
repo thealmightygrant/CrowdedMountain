@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from celery import task
-from xml_count import cdotXMLReader
-from xml_parse import cdotXMLParser
+from .xml_count import cdotXMLReader
+from .xml_parse import cdotXMLParser
 
 #each task must start with @app.task
 #the ignore_result is if we don't want the state to be stored
@@ -25,7 +25,9 @@ from xml_parse import cdotXMLParser
 #NOTE: by agreement with CDOT, don't reference more than once every 2 minutes
 @task()
 def gen_speed_values():
-    reader = cdotXMLReader(cdot_url = 'https://data.cotrip.org/xml/speed_segments.xml')
-    parser = cdotXMLParser(reader.data)
+    reader = cdotXMLReader()
+    data = reader.open_cdot_feed(cdot_url = 'https://data.cotrip.org/xml/speed_segments.xml')
+    parser = cdotXMLParser(data)
     parser.prune_data()
     parser.print_xml()
+    parser.store_highway_data()

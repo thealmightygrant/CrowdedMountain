@@ -19,10 +19,11 @@ CELERYBEAT_SCHEDULE = {
 
 
 INSTALLED_APPS += (
+    'south',
+    'djcelery',
+    'kombu.transport.django',    
     'PowdrMap.apps.mountain_chooser',
     'PowdrMap.apps.cdot_counting',
-    'djcelery',
-    'kombu.transport.django',
 )
 
 

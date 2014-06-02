@@ -3,7 +3,7 @@ from xml.etree import cElementTree       #C implementation of xml.etree.ElementT
 from xml.parsers.expat import ExpatError #XML formatting errors
 
 import urllib2
-from xml_parse import cdotXMLParser
+from .xml_parse import cdotXMLParser
 
 class cdotXMLReader:
 
@@ -17,6 +17,7 @@ class cdotXMLReader:
     def open_cdot_feed(self, cdot_url=None):
         '''Open CDOT XML Feeds, returns XML data, see schemas at: http://www.cotrip.org/xmlFeed.htm '''
         xml_data = None
+
 
         passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
         passman.add_password(None, cdot_url, self.username, self.password)
@@ -36,7 +37,9 @@ class cdotXMLReader:
                 print "Error opening CDOT page: ", err.code
         except urllib2.URLError, err:
             print "Error opening CDOT page: ", err.code
-
+        except IOError:
+            print "Error reading CDOT page"
+        
         return xml_data
 
 if __name__ == "__main__":

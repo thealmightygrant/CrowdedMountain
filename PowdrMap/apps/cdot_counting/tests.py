@@ -6,10 +6,13 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from django.core.exceptions import ValidationError
 
 from .xml_count import cdotXMLReader
 from .xml_parse import cdotXMLParser
+from .models import HighwaySegment
 import re
+import datetime
 
 #import optical_flow_count
 #from django.conf import settings
@@ -63,6 +66,27 @@ class XMLParserTestCase(TestCase):
             self.assertGreater(end, start)
             self.assertGreaterEqual(start, 177.0)
             self.assertLessEqual(end, 239.7)
+
+    def test_validation_segments(self):
+        h = HighwaySegment()
+        h.highway_name = 'I-70'
+        h.start_mile_marker = 177.0
+        h.end_mile_marker = 184.0
+        h.direction = 'SE'
+        h.datetime_calculated = datetime.datetime.now()
+        h.current_travel_time = 10
+        h.expected_travel_time = 20
+        h.avg_volume = -1
+        h.avg_occupancy = 5
+        with self.assertRaises(ValidationError):
+            h.full_clean()
+        h.avg_occupancy = -1
+        with self.assertRaises(ValidationError):
+            h.full_clean()
+        h.avg_volume = 5
+        with self.assertRaises(ValidationError):
+            h.full_clean()
+        h.avg_occupancy = 5
 
 
 if __name__ == "__main__":

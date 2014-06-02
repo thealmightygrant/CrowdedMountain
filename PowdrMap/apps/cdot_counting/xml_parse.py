@@ -5,8 +5,10 @@ except ImportError:
     import xml.etree.ElementTree as ET
 
 import re
-#from models import HighwaySegment
-#from dateutil import parser as dtp
+from models import HighwaySegment
+from dateutil import parser as dtp
+
+from django.core.exceptions import ValidationError
 
 class cdotXMLParser:
 
@@ -33,7 +35,7 @@ class cdotXMLParser:
             end = float(node.find('EndMileMarker').text)
             if start > end:
                 node.find('StartMileMarker').text, node.find('EndMileMarker').text = \
-                node.find('EndMileMarker').text, node.find('StartMileMarker').text
+                    node.find('EndMileMarker').text, node.find('StartMileMarker').text
                 start, end = end, start
             if start < 177.0 or end > 239.7:
                 self.root.remove(node)
@@ -48,10 +50,24 @@ class cdotXMLParser:
             h.end_mile_marker = float(node.find('EndMileMarker').text)
             h.direction = node.find('Direction').text          
             h.datetime_calculated = dtp.parse(node.find('CalculatedDate').text)
-            h.current_travel_time = int(node.find('ExpectedTravelTime').text)    # in minutes
-            h.expected_travel_time = int(node.find('ExpectedTravelTime').text)   # in minutes 
+
+            try:
+                print 'Expected Travel Time: ', node.find('ExpectedTravelTime').text
+                h.current_travel_time = int(node.find('ExpectedTravelTime').text)    # in minutes
+            except ValueError as e:
+                h.current_travel_time = 0
+
+            try:
+                h.expected_travel_time = int(node.find('ExpectedTravelTime').text)   # in minutes 
+            except ValueError as e:
+                h.expected_travel_time = 0
+
             h.avg_volume = int(node.find('AverageVolume').text)    # in # cars
-            h.avg_occupancy = int(node.find('AverageOccupancy').text)   # in % over last 2 minutes 
+            h.avg_occupancy = int(node.find('AverageOccupancy').text)   # in % over last 2 minutes
+            try:
+                h.full_clean()
+            except ValidationError as e:
+                continue
             h.save()
 
     def split_by_resort(self):
