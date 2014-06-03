@@ -16,17 +16,18 @@ class cdotXMLParser:
         self.data = data
         self.root = ET.fromstring(self.data)
 
-    def prune_data(self):
+    def prune_data(self, setup_for_resorts = True):
         #remove workspace, '{http://www.cotrip.org/schema/speed}' from start of each tag
         for node in self.root.iter():
             match = re.search(r'({http://[\w./]+})(\w+)', node.tag)
             node.tag = match.group(2)
 
+        if setup_for_resorts:
         #remove everything that's not on I-70
-        for node in self.root.findall('Segment'):
-            for child in node.iter('RoadName'):
-                if child.text != 'I-70':
-                    self.root.remove(node)
+            for node in self.root.findall('Segment'):
+                for child in node.iter('RoadName'):
+                    if child.text != 'I-70':
+                        self.root.remove(node)
 
         #remove anything not close to the ski areas
         #MM 177.0 (East Vail) to 239.7 (Idaho Springs)
@@ -50,16 +51,34 @@ class cdotXMLParser:
             h.end_mile_marker = float(node.find('EndMileMarker').text)
             h.direction = node.find('Direction').text          
             h.datetime_calculated = dtp.parse(node.find('CalculatedDate').text)
-
+            
+            #TODO: should we be setting the value to None when there is an error to ensure it is caught??
             try:
-                print 'Expected Travel Time: ', node.find('ExpectedTravelTime').text
-                h.current_travel_time = int(node.find('ExpectedTravelTime').text)    # in minutes
+                hours = node.find('TravelTime').find('Hours')
+                minutes = node.find('TravelTime').find('Minutes')
+                if hours is not None:
+                    h.current_travel_time = (int(hours.text) * 60) + int(minutes.text)   # in minutes
+                else:
+                    h.current_travel_time = int(minutes.text)
             except ValueError as e:
+                h.current_travel_time = 0
+            except AttributeError as e:
+                #when this happens, there is typically shit data
+                #it means that there is no TravelTime element
                 h.current_travel_time = 0
 
             try:
-                h.expected_travel_time = int(node.find('ExpectedTravelTime').text)   # in minutes 
+                hours = node.find('ExpectedTravelTime').find('Hours')
+                minutes = node.find('ExpectedTravelTime').find('Minutes')
+                if hours is not None:
+                    h.expected_travel_time = (int(hours.text) * 60) + int(minutes.text)   # in minutes
+                else:
+                    h.expected_travel_time = int(minutes.text)
             except ValueError as e:
+                h.expected_travel_time = 0
+            except AttributeError as e:
+                #when this happens, there is typically shit data
+                #it means that there is no ExpectedTravelTime element
                 h.expected_travel_time = 0
 
             h.avg_volume = int(node.find('AverageVolume').text)    # in # cars
