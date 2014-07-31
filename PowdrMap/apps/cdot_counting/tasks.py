@@ -29,5 +29,8 @@ def gen_speed_values():
     data = reader.open_cdot_feed(cdot_url = 'https://data.cotrip.org/xml/speed_segments.xml')
     parser = cdotXMLParser(data)
     parser.prune_data()
-    parser.print_xml()
     parser.store_highway_data()
+
+#@task()
+#def aggregate_hourly_data():
+    
