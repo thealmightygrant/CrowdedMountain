@@ -37,6 +37,7 @@ class cdotXMLParser:
             if start > end:
                 node.find('StartMileMarker').text, node.find('EndMileMarker').text = \
                     node.find('EndMileMarker').text, node.find('StartMileMarker').text
+                #TODO: this should probably be contained in the model validation
                 start, end = end, start
             if start < 177.0 or end > 239.7:
                 self.root.remove(node)
@@ -84,6 +85,11 @@ class cdotXMLParser:
             h.avg_volume = int(node.find('AverageVolume').text)    # in # cars
             h.avg_occupancy = int(node.find('AverageOccupancy').text)   # in % over last 2 minutes
             try:
+                #Calls in this order:
+                #  clean_fields(): validate each field separately
+                #  clean(): see model for particulars, provides custom validation
+                #  validate_unique(): validates all unique constraints, 
+                #       requires setting unique_together constraint in model
                 h.full_clean()
             except ValidationError as e:
                 continue

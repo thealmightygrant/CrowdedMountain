@@ -32,6 +32,7 @@
 		    scrollingNow = false;
 		    //call nav change function
 		    if (last_anchor != current_anchor){
+			console.log('#nav_' + last_anchor);
 			$('#nav_' + last_anchor).removeClass('in_view');
 			$('#nav_' + current_anchor).addClass('in_view');
 		    }

@@ -37,7 +37,4 @@ def convert_to_resort(resort_name):
         for hs in resort_hs_dic[resort_name]:
             basic_count += hs.avg_volume
 
-
-
-def resort_hs_callback(resort_name):
-    
+#def resort_hs_callback(resort_name):
