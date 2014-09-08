@@ -1,8 +1,31 @@
 from .base import *
+import djcelery
+
+from datetime import timedelta
+
+djcelery.setup_loader()
+BACKEND = 'amqp'
+BROKER_URL = 'amqp://'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+#CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+CELERY_TIMEZONE = 'America/Denver'
+
+CELERYBEAT_SCHEDULE = {
+    'grab_and_parse_xml': {
+        'task': 'PowdrMap.apps.cdot_counting.tasks.gen_speed_values',
+        'schedule': timedelta(minutes=2)
+    },
+}
+
 
 INSTALLED_APPS += (
+    'south',
+    'djcelery',
+    'kombu.transport.django',    
     'PowdrMap.apps.mountain_chooser',
+    'PowdrMap.apps.cdot_counting',
 )
+
 
 DATABASES = {
     'default': {
@@ -14,6 +37,7 @@ DATABASES = {
         'PORT': '',                  # Set to empty string for default.
     }
 }
+
 
 #DATABASES.update({
 #         'some_name': {

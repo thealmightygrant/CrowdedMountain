@@ -2,6 +2,7 @@
 from celery import task
 from .xml_count import cdotXMLReader
 from .xml_parse import cdotXMLParser
+from .models import HighwaySegment
 
 #each task must start with @app.task
 #the ignore_result is if we don't want the state to be stored
@@ -33,4 +34,5 @@ def gen_speed_values():
 
 #@task()
 #def aggregate_hourly_data():
+#    cdm.HighwaySegment.older_objects.aggregate_old_segments()
     
