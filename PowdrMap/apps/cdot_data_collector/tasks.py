@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from celery import task
-from .xml_count import cdotXMLReader
-from .xml_parse import cdotXMLParser
+from .xml_reader import cdotXMLReader
+from .xml_parser import cdotXMLParser
 from .models import HighwaySegment
 
 #each task must start with @app.task
@@ -32,7 +32,6 @@ def gen_speed_values():
     parser.prune_data()
     parser.store_highway_data()
 
-#@task()
-#def aggregate_hourly_data():
-#    cdm.HighwaySegment.older_objects.aggregate_old_segments()
-    
+@task()
+def aggregate_hourly_data():
+    HighwaySegment.older_objects.aggregate_old_segments()

@@ -3,14 +3,13 @@ from xml.etree import cElementTree       #C implementation of xml.etree.ElementT
 from xml.parsers.expat import ExpatError #XML formatting errors
 
 import urllib2
-from .xml_parse import cdotXMLParser
 
 class cdotXMLReader:
 
     def __init__(self):
         #TODO: move this and any other SECRETS to something more secure,
         #TODO: this does not work with a relative file location at the moment!
-        f = open('/home/sherrick/external_projects/PowdrMap/PowdrMap/apps/cdot_counting/cdot_info', 'r')
+        f = open('/home/sherrick/external_projects/PowdrMap/PowdrMap/apps/cdot_data_collector/cdot_info', 'r')
         self.username = f.readline().rstrip()
         self.password = f.readline().rstrip()
 
@@ -36,7 +35,7 @@ class cdotXMLReader:
             else:
                 print "Error opening CDOT page: ", err.code
         except urllib2.URLError, err:
-            print "Error opening CDOT page: ", err.code
+            print "Error opening CDOT page: ", err.args
         except IOError:
             print "Error reading CDOT page"
         

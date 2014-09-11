@@ -8,8 +8,8 @@ Replace this with more appropriate tests for your application.
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 
-from .xml_count import cdotXMLReader
-from .xml_parse import cdotXMLParser
+from .xml_reader import cdotXMLReader
+from .xml_parser import cdotXMLParser
 from .models import HighwaySegment
 import re
 import datetime
@@ -66,7 +66,6 @@ class AggregateTestCase(TestCase):
         h.expected_travel_time = random.randrange(25)
         h.avg_volume = random.randrange(5) + 1
         h.avg_occupancy = random.randrange(10) + 1
-        #print h
         h.save()
 
     def random_date(self, start, end):

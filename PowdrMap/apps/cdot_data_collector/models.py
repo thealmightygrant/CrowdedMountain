@@ -108,39 +108,4 @@ class HighwaySegment(models.Model):
         return u'%s %s %s' % (self.avg_occupancy, self.start_mile_marker, self.end_mile_marker)
 
     class Meta:
-        ordering = ['highway_name','start_mile_marker']
-
-
-class Location(models.Model):
-    address = models.CharField(max_length=50)
-    city = models.CharField(max_length=60)
-    state_province = models.CharField(max_length=30)
-    country = models.CharField(max_length=50)
-
-    def __unicode__(self):
-        return self.address
-
-    #other possible locations: GIS location(lat, long), #Local location (within the resort, where is it), Lifts and lift locations will be done in a different django app
-
-
-class Resort(models.Model):
-    name = models.CharField(max_length=50)
-    location = models.ForeignKey(Location)
-    
-    def __unicode__(self):
-        return self.name
-    
-    class Meta:
-        ordering = ['name']
-        
-class CountStatistic(models.Model):
-    count = models.IntegerField()
-    date = models.DateTimeField()
-    approximation = models.BooleanField()
-    resort = models.ForeignKey(Resort)
-    
-    def __unicode__(self):
-        return u'%s %s' % (self.resort.name, self.count)
-
-    class Meta:
-        ordering = ['resort','date']
+        ordering = ['start_mile_marker']

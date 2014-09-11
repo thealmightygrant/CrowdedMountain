@@ -1,9 +1,9 @@
 #!/bin/bash
-export PROJECT_NAME=CrowdedMountain
-export PROJECT_HOME=$HOME/$PROJECT_NAME/$PROJECT_NAME
-find $PROJECT_HOME -path $PROJECT_HOME/mountain_env -prune -o -name '*.pyc'
-rm `find . -path $PROJECT_HOME/mountain_env -prune -o -name '*.pyc'` -rf
-find $PROJECT_HOME -path $PROJECT_HOME/mountain_env -prune -o -name '#*#'
-rm `find . -path $PROJECT_HOME/mountain_env -prune -o -name '#*#'` -rf
-find $PROJECT_HOME -path $PROJECT_HOME/mountain_env -prune -o -name '*~'
-rm `find . -path $PROJECT_HOME/mountain_env -prune -o -name '*~'` -rf
+export PROJECT_NAME=PowdrMap
+export PROJECT_HOME=$HOME/external_projects/$PROJECT_NAME/$PROJECT_NAME
+find $PROJECT_HOME -name '*.pyc'
+rm `find $PROJECT_HOME -name '*.pyc'` -rf
+find $PROJECT_HOME -name '#*#'
+rm `find $PROJECT_HOME -name '#*#'` -rf
+find $PROJECT_HOME -name '*~'
+rm `find $PROJECT_HOME -name '*~'` -rf

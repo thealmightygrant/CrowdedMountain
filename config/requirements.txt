@@ -1,3 +1,4 @@
+DateTime==4.0.1
 Django==1.5.4
 South==0.8.4
 amqp==1.4.5
@@ -14,7 +15,9 @@ librabbitmq==1.5.0
 mechanize==0.2.5
 numpy==1.8.0
 psycopg2==2.5.1
+python-dateutil==2.2
 pytz==2014.2
 requests==2.1.0
-scipy==0.13.3
+six==1.7.3
 wsgiref==0.1.2
+zope.interface==4.1.1

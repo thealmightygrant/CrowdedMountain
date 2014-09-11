@@ -12,8 +12,12 @@ CELERY_TIMEZONE = 'America/Denver'
 
 CELERYBEAT_SCHEDULE = {
     'grab_and_parse_xml': {
-        'task': 'PowdrMap.apps.cdot_counting.tasks.gen_speed_values',
+        'task': 'PowdrMap.apps.cdot_data_collector.tasks.gen_speed_values',
         'schedule': timedelta(minutes=2)
+    },
+    'aggregate_hw_segs': {
+        'task': 'PowdrMap.apps.cdot_data_collector.tasks.aggregate_hourly_data',
+        'schedule': timedelta(days=1)
     },
 }
 
@@ -21,11 +25,20 @@ CELERYBEAT_SCHEDULE = {
 INSTALLED_APPS += (
     'south',
     'djcelery',
+    #'notifications',
+    #'user-sessions',
     'kombu.transport.django',    
     'PowdrMap.apps.mountain_chooser',
-    'PowdrMap.apps.cdot_counting',
+    'PowdrMap.apps.cdot_data_collector',
+    'PowdrMap.apps.cdot_webcam_collector',
 )
 
+
+#MIDDLEWARE_CLASSES += (
+#    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#)
+
+#SESSION_ENGINE = 'user_sessions.backends.db'
 
 DATABASES = {
     'default': {
