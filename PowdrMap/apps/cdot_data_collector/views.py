@@ -39,8 +39,8 @@ import datetime
 
 #def resort_hs_callback(resort_name):
 
-def show_hs_counts_on_map(request):
+def hw_seg_map(request):
     fake_count = 0
     t = get_template('cdot_hs_counts.html')
-    html = t.render(Context({'some_count': fake_count})
+    html = t.render(Context({'some_count': fake_count }))
     return HttpResponse(html)
