@@ -1,42 +1,34 @@
 """
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
+Tests the different parts of the CDOT data collector application.
 
-Replace this with more appropriate tests for your application.
+Part One: XML Reading and Parsing of HW segment data (every two minutes)
+Part Two: Aggregation of old (> 24 hours old) HW Segment data into hourly chunks
+Part Three: A User Interface that displys the current HW segment data 
+
 """
 
 from django.test import TestCase
+from django.core.urlresolvers import resolve
 from django.core.exceptions import ValidationError
 
 from .xml_reader import cdotXMLReader
 from .xml_parser import cdotXMLParser
 from .models import HighwaySegment
+from .views import hw_seg_map
+
 import re
 import datetime
 import random
-
-#import optical_flow_count
-#from django.conf import settings
-#import glob
-#import os
-#import sys
 #import pdb
 
-'''class OpticalFlowTests(TestCase):
-    def setUp(self):
-        self.load_car_videos()
 
-    def load_car_videos(self):
-        media_loc = settings.MEDIA_ROOT
-        self.video_files = glob.glob(media_loc + "*.flv")
-        self.car_count_files = glob.glob(media_loc + "car_count*.txt")
-
-    def test_loading_car_files(self):
-        pass'''
+class HWSegMapPageTest(TestCase):
+    def test_hw_display_url_resolves_to_hw_seg_map_view(self):
+        #resolve is used internally by Django to map a view function to a url
+        found = resolve('/cdot_hw_data/')
+        self.assertEqual(found.func, hw_seg_map)
 
 class AggregateTestCase(TestCase):
-    #TODO: perhaps have this call another class that creates test HighwaySegments
-
     def setUp(self):
 
         self.mile_marker_list = [177.0, 189.4, 195.4, 200.7, 205.5, 211.0, 213.6, 216.3, 221.3, 227.9, 232.3, 232.7, 239.7]
