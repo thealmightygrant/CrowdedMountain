@@ -8,6 +8,7 @@ Part Three: A User Interface that displys the current HW segment data
 """
 
 from django.test import TestCase
+from django.http import HttpRequest
 from django.core.urlresolvers import resolve
 from django.core.exceptions import ValidationError
 
@@ -27,6 +28,14 @@ class HWSegMapPageTest(TestCase):
         #resolve is used internally by Django to map a view function to a url
         found = resolve('/cdot_hw_data/')
         self.assertEqual(found.func, hw_seg_map)
+
+    def test_hw_display_returns_correct_html(self):
+        request = HttpRequest()
+        response = hw_seg_map(request)
+        print response.content
+        self.assertTrue(response.content.startswith('<!DOCTYPE html>'))
+        self.assertIn('<title>Mountain Crowd Estimates</title>', response.content)
+        #self.assertTrue(response.content.endswith('</html>'))
 
 class AggregateTestCase(TestCase):
     def setUp(self):
